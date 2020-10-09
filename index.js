@@ -26,14 +26,30 @@ client.on('message', message => {
     const args = message.content.slice(prefix.length).trim().split(/ +/);
     const command = args.map(arg => arg.toLocaleLowerCase());
 
-    // ejemplo
-    if (message.content === `${prefix}ping`) {
-        client.commands.get('ping').execute(message, args);
+    // quiere hacer un GET 
+    if(command[0] === 'get'){
+
+        // quiere un apunte 
+        if(command[1] === 'apunte'){
+
+            client.commands.get('getApunte').execute(message, args);
+        }
+        if(command[1] === 'clase'){
+            client.commands.get('getClase').execute(message, args);
+        }
+    } 
+    // quiere hacer un SET 
+    if(command[0] === 'set'){
+        // quiere un apunte 
+        if(command[1] === 'apunte'){
+
+            // console.log('quiere setter un apunte')
+        }
+        if(command[1] === 'clase'){
+            // console.log('quiere setter un apunte')
+        }
     }
 
-    if (message.content === `${prefix}ejemplo`) {
-        client.commands.get('getApunte').execute(message, args);
-    }
 });
 
 client.login(token);
