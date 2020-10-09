@@ -1,41 +1,38 @@
-const { Client, MessageEmbed } = require('discord.js');
+const fs = require('fs');
+const { Client, MessageEmbed, Collection } = require('discord.js');
+const { prefix, token } = require('./config.json');
 const client = new Client();
 
-const { prefix, token } = require('./config.json');
+// coleccion de comandos
+client.commands = new Collection();
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+
+for (const file of commandFiles) {
+	const command = require(`./commands/${file}`);
+	client.commands.set(command.name, command);
+}
 
 client.on('ready', () => {
     // console.log(`Logged in as ${client.user.tag}!`);
     console.log('Secretaria a tu servicio');
 });
 
-// accion y materia 
-// ej: apunte recursos 
-// ej : clase (link)recursos 
-
 client.on('message', message => {
 
-    // no tiene prefijo del comando o el autor del mensaje es el bot
+    // no tiene prefijo o el autor del mensaje es el bot
     if (!message.content.startsWith(prefix) || message.author.bot) return;
 
     // quito el prefijo
     const args = message.content.slice(prefix.length).trim().split(/ +/);
-    console.log(args)
     const command = args.map(arg => arg.toLocaleLowerCase());
-    // command[0] = accion, command[1] = materia 
 
+    // ejemplo
     if (message.content === `${prefix}ping`) {
-        message.channel.send('Pong.');
-    } else if (message.content === `${prefix}beep`) {
-        message.channel.send('Boop.');
+        client.commands.get('ping').execute(message, args);
     }
 
     if (message.content === `${prefix}ejemplo`) {
-        const embed = new MessageEmbed()
-            .setTitle('APUNTE: Recursos')
-            .setColor('ORANGE')
-            .setDescription('https://docs.google.com/document/d/1n5zrD9G2BMEi-B-B6unI4cZGUC74a9IoIGAd_WYbLb4/edit');
-
-        message.channel.send(embed);
+        client.commands.get('getApunte').execute(message, args);
     }
 });
 
