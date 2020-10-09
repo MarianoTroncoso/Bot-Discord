@@ -14,6 +14,7 @@ const apunteSchema = new Schema({
     },
     tipo:{
         type: String, 
+        default: 't',
         maxlength: 1
     }
 },
