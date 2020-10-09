@@ -1,7 +1,21 @@
 const fs = require('fs');
 const { Client, MessageEmbed, Collection } = require('discord.js');
-const { prefix, token } = require('./config.json');
+const { prefix, token, uriMongo } = require('./config.json');
 const client = new Client();
+
+// mongo
+const mongoose = require('mongoose');
+const uri = uriMongo;
+mongoose.connect(uri, 
+    {
+        useNewUrlParser: true,
+        useCreateIndex: true,
+        useUnifiedTopology: true
+    })
+const connection = mongoose.connection;
+connection.once('open', () => {
+    console.log('Me conecté a mongo')
+})
 
 // coleccion de comandos
 client.commands = new Collection();

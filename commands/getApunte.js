@@ -6,7 +6,7 @@ module.exports = {
 	description: 'get the apunte',
 	execute(message, args) {
 
-        console.log(args)
+        // console.log(args)
 
         const embed = new MessageEmbed()
             .setTitle('APUNTE: Recursos')
