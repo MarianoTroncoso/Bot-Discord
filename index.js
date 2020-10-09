@@ -45,7 +45,7 @@ client.on('message', message => {
 
         // quiere un apunte 
         if(command[1] === 'apunte'){
-
+            
             client.commands.get('getApunte').execute(message, args);
         }
         if(command[1] === 'clase'){
