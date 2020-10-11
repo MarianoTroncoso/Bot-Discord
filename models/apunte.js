@@ -11,11 +11,6 @@ const apunteSchema = new Schema({
     url:{
         type: String,
         default: 'nada por ahora...'
-    },
-    tipo:{
-        type: String, 
-        default: 't',
-        maxlength: 1
     }
 },
 {

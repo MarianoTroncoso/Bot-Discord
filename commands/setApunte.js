@@ -7,7 +7,9 @@ module.exports = {
 	description: 'set the apunte',
 	execute(message, args) {
 
-        // console.log(args)
+        // faltar controlar que no exista ese apunte 
+
+        
 
         const newApunte = new Apunte({
             materia: args[2],
