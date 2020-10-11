@@ -7,7 +7,7 @@ module.exports = {
 	description: 'get the apunte',
 	async execute (message,  args) {
 
-        console.log(args)
+        // console.log(args)
 
         // arreglo de materias
         const materias = (await Apunte.find({}).select('materia -_id')).map( x => x.materia)
@@ -15,7 +15,7 @@ module.exports = {
         if(materias.includes(args[2])){
             // la materia existe en la bd 
             const embed = new MessageEmbed()
-            .setTitle('APUNTE: Recursos')
+            .setTitle('APUNTE: ' + args[2])
             .setColor('ORANGE')
             .setDescription('https://docs.google.com/document/d/1n5zrD9G2BMEi-B-B6unI4cZGUC74a9IoIGAd_WYbLb4/edit');
 
@@ -26,9 +26,5 @@ module.exports = {
             .setColor('RED')
             message.channel.send(embed);
         }
-
-        
-
-        
-	},
+	}
 };
