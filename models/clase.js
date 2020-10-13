@@ -1,3 +1,5 @@
+// modelo que representa el link de acceso a la clase virtual 
+
 const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;

@@ -62,6 +62,7 @@ client.on('message', message => {
         }
         if(command[1] === 'clase'){
             // console.log('quiere setter un apunte')
+            client.commands.get('setClase').execute(message, args);
         }
     }
 

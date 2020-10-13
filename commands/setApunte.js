@@ -32,11 +32,11 @@ module.exports = {
         } else {
             // la materia no existe
 
-            // controlo si puedo agregar mas materias (limit 5)
+            // controlo si puedo agregar mas materias (limite = 5)
 
             const cantMaterias = await Apunte.countDocuments({}, ( err, count) => { count })
 
-            if(cantMaterias < 6){
+            if(cantMaterias < 11){
 
                 // guardo 
                 const newApunte = new Apunte({

@@ -14,10 +14,14 @@ module.exports = {
         
         if(materias.includes(args[2])){
             // la materia existe en la bd 
+
+            // hago la consulta
+            const actual = await Apunte.find({materia: args[2]})
+
             const embed = new MessageEmbed()
             .setTitle('APUNTE: ' + args[2])
             .setColor('ORANGE')
-            .setDescription('https://docs.google.com/document/d/1n5zrD9G2BMEi-B-B6unI4cZGUC74a9IoIGAd_WYbLb4/edit');
+            .setDescription(actual[0].url);
 
 		    message.channel.send(embed);
         } else {
