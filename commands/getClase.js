@@ -16,7 +16,7 @@ module.exports = {
             // la materia existe en la bd 
 
              // hago la consulta
-             const actual = await Clase.find({materia: args[2]})
+            const actual = await Clase.find({materia: args[2]})
 
             const embed = new MessageEmbed()
             .setTitle('CLASE: ' + args[2])

@@ -66,6 +66,11 @@ client.on('message', message => {
         }
     }
 
+    // comando help 
+    if(command[0] === 'help'){
+        client.commands.get('help').execute(message, args);
+    }
+
 });
 
 client.login(token);
