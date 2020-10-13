@@ -71,6 +71,20 @@ client.on('message', message => {
         client.commands.get('help').execute(message, args);
     }
 
+    // comando list
+    if(command[0] === 'list'){
+        // quiere listar materias de apuntes
+        if(command[1] === 'apunte'){
+
+            client.commands.get('listApunte').execute(message, args);
+        }
+        // quiere listar materias de clases
+        if(command[1] === 'clase'){
+
+            client.commands.get('listClase').execute(message, args);
+        }
+    }
+
 });
 
 client.login(token);
