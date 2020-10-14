@@ -26,8 +26,9 @@ module.exports = {
 		    message.channel.send(embed);
         } else {
             const embed = new MessageEmbed()
-            .setTitle('MATERIA NO VÁLIDA')
+            .setTitle('Materia no válida')
             .setColor('RED')
+            .addField('Para conocer materias disponibles utilizar el comando: ', '!list apunte');
             message.channel.send(embed);
         }
 	}

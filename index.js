@@ -47,42 +47,57 @@ client.on('message', message => {
         if(command[1] === 'apunte'){
 
             client.commands.get('getApunte').execute(message, args);
-        }
-        if(command[1] === 'clase'){
+        } 
+        else if(command[1] === 'clase'){
             client.commands.get('getClase').execute(message, args);
         }
+        else {
+            client.commands.get('excepcion1').execute(message, args);
+        }
     } 
+
     // quiere hacer un SET 
-    if(command[0] === 'set'){
+    else if(command[0] === 'set'){
         // quiere un apunte 
         if(command[1] === 'apunte'){
 
             // console.log('quiere setter un apunte')
             client.commands.get('setApunte').execute(message, args);
         }
-        if(command[1] === 'clase'){
+        else if(command[1] === 'clase'){
             // console.log('quiere setter un apunte')
             client.commands.get('setClase').execute(message, args);
         }
-    }
-
-    // comando help 
-    if(command[0] === 'help'){
-        client.commands.get('help').execute(message, args);
+        else {
+            client.commands.get('excepcion1').execute(message, args);
+        }
     }
 
     // comando list
-    if(command[0] === 'list'){
+    else if(command[0] === 'list'){
         // quiere listar materias de apuntes
         if(command[1] === 'apunte'){
 
             client.commands.get('listApunte').execute(message, args);
         }
         // quiere listar materias de clases
-        if(command[1] === 'clase'){
+        else if(command[1] === 'clase'){
 
             client.commands.get('listClase').execute(message, args);
         }
+        else {
+            client.commands.get('excepcion1').execute(message, args);
+        }
+    }
+
+    // comando help 
+    else if(command[0] === 'help'){
+        client.commands.get('help').execute(message, args);
+    }
+
+    // excepcion
+    else {
+        client.commands.get('excepcion0').execute(message, args);
     }
 
 });
