@@ -102,4 +102,5 @@ client.on('message', message => {
 
 });
 
+// token
 client.login(token);
